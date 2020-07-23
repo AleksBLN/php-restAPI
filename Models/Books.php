@@ -1,9 +1,11 @@
 <?php 
 
+include_once('Connect.php');
+
 class Books {
     public static function getBookById($parameters) {
         $id = $parameters[0];
-        $conn = mysqli_connect("localhost", "root", "root", "mvc");
+        $conn = Connect::getConnect();
         $sqlOut = mysqli_query($conn, "SELECT * FROM books WHERE id = $id");
         if (mysqli_num_rows($sqlOut) === 0) {
 
@@ -21,7 +23,7 @@ class Books {
     }
 
     public static function getBooksList() {
-        $conn = mysqli_connect("localhost", "root", "root", "mvc");
+        $conn = Connect::getConnect();
         $sqlOut = mysqli_query($conn, "SELECT * FROM books");
         $books = mysqli_fetch_all($sqlOut, MYSQLI_ASSOC);
         return json_encode($books);
@@ -31,7 +33,7 @@ class Books {
         $name = $book['name'];
         $author = $book['author'];
         $year = $book['year'];
-        $conn = mysqli_connect("localhost", "root", "root", "mvc");
+        $conn = Connect::getConnect();
         mysqli_query($conn, "INSERT INTO books (`id`, `name`, `author`, `year`) VALUES (NULL, '$name', '$author', $year)");
 
         http_response_code(201);
@@ -50,7 +52,7 @@ class Books {
         $author = $book['author'];
         $year = $book['year'];
 
-        $conn = mysqli_connect("localhost", "root", "root", "mvc");
+        $conn = Connect::getConnect();
         mysqli_query($conn, "UPDATE books SET `name` = '$name', `author` = '$author', `year` = $year WHERE `books` . `id` = '$id'");
 
         http_response_code(200);
@@ -64,7 +66,7 @@ class Books {
 
     public static function deleteBook($parameters) {
         $id = $parameters[0];
-        $conn = mysqli_connect("localhost", "root", "root", "mvc");
+        $conn = Connect::getConnect();
         mysqli_query($conn, "DELETE FROM books WHERE `books` . `id` = '$id'");
 
         http_response_code(200);

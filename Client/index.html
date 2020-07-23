@@ -11,6 +11,41 @@
         <div class="row post-list">
 
         </div>
+        <div class="row col-12 mt-5">
+            <div class="mr-5">
+                <h2>Add book</h2>
+                <div class="form-group">
+                  <label for="name">Book title</label>
+                  <input type="text" class="form-control" id="name" aria-describedby="emailHelp">
+                </div>
+                <div class="form-group">
+                    <label for="author">Author</label>
+                    <input type="text" class="form-control" id="author" aria-describedby="emailHelp">
+                </div>
+                <div class="form-group">
+                  <label for="year">Year</label>
+                  <input type="number" class="form-control" id="year">
+                </div>
+                <button class="btn btn-primary" onclick="addBook()">Add book</button>
+            </div>
+            <form>
+                <h2>Edit book</h2>
+                <div class="form-group">
+                  <label for="name">Book title</label>
+                  <input type="text" class="form-control" id="name-edit" aria-describedby="emailHelp">
+                </div>
+                <div class="form-group">
+                    <label for="author">Author</label>
+                    <input type="text" class="form-control" id="author-edit" aria-describedby="emailHelp">
+                </div>
+                <div class="form-group">
+                  <label for="year">Year</label>
+                  <input type="number" class="form-control" id="year-edit">
+                </div>
+                <button class="btn btn-primary" onclick="editBook()">Edit book</button>
+            </div>
+        </div>
+        
     </div>
     <script src="main.js"></script>
 </body>
