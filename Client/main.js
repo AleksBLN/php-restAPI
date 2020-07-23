@@ -10,8 +10,10 @@ async function getData() {
                 <th>${book.name}</th>
                 <th>${book.author}</th>
                 <th>${book.year}</th>
-                <th><button type="button" class="btn btn-primary btn-sm" onclick="selectBook('${book.id}', '${book.name}', '${book.author}', '${book.year}')">Edit</button></th>
-                <th><button type="button" class="btn btn-danger btn-sm" onclick="removeBook(${book.id})">Delete</button></th>
+                <th class="d-flex justify-content-end">
+                    <button type="button" class="btn btn-primary btn-sm mr-1" onclick="selectBook('${book.id}', '${book.name}', '${book.author}', '${book.year}')">Edit</button>
+                    <button type="button" class="btn btn-danger btn-sm" onclick="removeBook(${book.id})">Delete</button>
+                </th>
                 
             </tr>
         `
