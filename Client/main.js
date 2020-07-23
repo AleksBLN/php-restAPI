@@ -3,19 +3,18 @@ let id = null;
 async function getData() {
 	let res = await fetch('http://php-restAPI/books');
     let books = await res.json();
-    document.querySelector('.post-list').innerHTML = '';
+    document.querySelector('.table-body').innerHTML = '';
     books.forEach(book => {
-        document.querySelector('.post-list').innerHTML += `
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">${book.name}</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">${book.author}</h6>
-                    <p class="card-text">${book.year}</p>
-                    <a href="#" class="card-link" onclick="selectBook('${book.id}', '${book.name}', '${book.author}', '${book.year}')">edit</a>
-                    <a href="#" class="card-link" onclick="removeBook(${book.id})">delete</a>
-                </div>
-            </div>
-        `      
+        document.querySelector('.table-body').innerHTML += `
+            <tr>
+                <th>${book.name}</th>
+                <th>${book.author}</th>
+                <th>${book.year}</th>
+                <th><button type="button" class="btn btn-primary btn-sm" onclick="selectBook('${book.id}', '${book.name}', '${book.author}', '${book.year}')">Edit</button></th>
+                <th><button type="button" class="btn btn-danger btn-sm" onclick="removeBook(${book.id})">Delete</button></th>
+                
+            </tr>
+        `
     });
 }
 async function addBook() {
