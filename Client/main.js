@@ -34,6 +34,10 @@ async function addBook() {
         body: formData,
     });
 
+    document.getElementById('name').value = '';
+    document.getElementById('author').value = '';
+    document.getElementById('year').value = '';
+
     const data = await res.json();
 
      if (data.status === true) {
@@ -69,6 +73,10 @@ async function editBook() {
         author: author,
         year: year
     };
+
+    document.getElementById('name-edit').value = '';
+    document.getElementById('author-edit').value = '';
+    document.getElementById('year-edit').value = '';
 
     let res = await fetch(`http://php-restAPI/books/${id}`, {
         method: 'PATCH',
